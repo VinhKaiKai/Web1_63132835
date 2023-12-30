@@ -1,0 +1,110 @@
+﻿.DangKyDangNhap {
+    margin-top: -1%;
+    float:right;
+}
+
+#ToanTrang {
+    font-family:'Segoe UI';
+    font-weight:700;
+    position: relative;
+}
+
+.DangKyDangNhap a:hover {
+    text-decoration: none;
+    color: dodgerblue;
+}
+
+.icDienThoai {
+    float: left;
+    margin-top: -1%;
+}
+.vinh{
+    padding-right:35px;
+}
+#divDanhMuc{
+    padding:0px;
+    height:30px;
+}
+.navMenu {
+    
+    float:right;
+}
+    .navMenu li {
+        display: inline;
+        margin-right: 20px;
+        transition: all 0.5s ease-out;
+        padding: 20px;
+        padding-top: 21px;
+        padding-bottom: 21px;
+    }
+    .navMenu li:hover {
+       background-color:cadetblue;
+       transition:all 0.5s ease-out;
+       border:solid 1px;
+       border-radius:5px;
+    }
+
+    .navMenu a:hover {
+        text-decoration: none;
+    }
+
+#txtTimKiem{
+    float:left;
+
+}
+#txtTimKiem input{
+    height:0px;
+    margin-left:50px;
+    border:solid 2px dashed;
+}
+#divHinhAnhTimKiem button{
+    width:30px;
+    background-color:#14A19A;
+    margin-right:-30px;
+    height:30px;
+    padding:2px 0 0 0;
+}
+#divHinhAnhTimKiem button:hover {
+   background-color:powderblue;
+}
+#divHinhAnhTimKiem img{
+    width:20px;
+    height:22px;
+}
+.slidervip{
+    display:flex;
+}
+.fixanhslider{
+    height:10px;
+    width:20px;
+}
+/*css slider*/
+#slider{
+    float:right;
+    width:900px;
+    height:400px;
+    margin-right:100px;
+}
+#divMenuTrai{
+    float:left;
+    width:300px;
+}
+#vinh1{
+    width:100%;
+}
+#divLeft{
+    width:33%;
+    float:left;
+}
+#divRight{
+    width:67%;
+    float:right;
+}
+#vinh2{
+    width:100%;
+
+}
+#NoiDung {
+    display: flex;
+    flex-wrap: wrap;
+}

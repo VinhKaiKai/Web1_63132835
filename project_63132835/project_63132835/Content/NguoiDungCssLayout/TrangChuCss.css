@@ -1,0 +1,53 @@
+﻿#SanPham {
+    margin-left:50px;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+    #SanPham:hover {
+        transform: scale(1.05); /* Tăng kích thước khi hover */
+    }
+#divBody{
+    margin-left:100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#AnhBia {
+    height: 280px;
+    width: 200px;
+    margin-top: 20px;
+    border: solid 3px;
+    margin-bottom: 20px;
+}
+
+#SanPham:hover #AnhBia img {
+    transform: scale(1.1); /* Tăng kích thước ảnh khi hover */
+    
+}
+#TenSach {
+    color: brown;
+    font-size: 20px;
+    text-align: center;
+}
+
+#vinh3{
+    color:blue;
+    
+}
+#vinh4{
+    height:200px;
+    width:150px;
+}
+#vinh5{
+    height:100%;
+    width:100%;
+}

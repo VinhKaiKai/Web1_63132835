@@ -1,0 +1,14 @@
+﻿@using project_63132835.Models;
+@model List<NhaXuatBan>
+<h1>Nhà xuất bản</h1>
+
+@foreach (var item in Model)
+{
+        <a href="@Url.Action("SachTheoNXB", new { @MaNXB = item.MaNXB })">@item.TenNXB</a>
+}
+<div>
+    <a href="@Url.Action("DanhMucNXB")">Nhà Xuất Bản khác</a>
+</div>
+
+
+

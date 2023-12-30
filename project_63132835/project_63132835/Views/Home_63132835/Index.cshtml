@@ -1,0 +1,55 @@
+﻿@using project_63132835.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Sach>
+
+<link href="~/Content/NguoiDungCssLayout/TrangChuCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/NguoiDungLayout.cshtml";
+    
+}
+@section NoiDungBenPhai{
+  
+}
+<div id="divBody">
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+
+        <div id="SanPham">
+            <a href="@Url.Action("XemChiTiet","Sach_63132835",new {@MaSach=item.MaSach})">
+                <div id="AnhBia">
+                    <img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="100%" height="100%"/>
+                </div>
+            </a>
+            <div id="TenSach">
+                @item.TenSach
+            </div>
+            <div id="GiaTien">
+                <span>Giá bán:</span>
+                <span id="vinh3">
+                    @item.GiaBan
+                </span>
+                <span>Đồng</span>
+            </div>
+        </div>
+    }
+
+    <div style="clear:both"></div>
+</div>
+
+@*Tạo liên kết các trang*@
+Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="Menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+
+@*làm css lại cho cái phân trang Menutrang*@
+<style>
+    .Menutrang li{
+        display:inline;
+    }
+    #NoiDung {
+        display: block;
+    }
+</style>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/NguoiDungCssLayout/style_63132835.css" rel="stylesheet" />
+</head>
+
+<body style="margin:0 0 0 0 ;">
+    <div id="banner" style="">
+        HỆ THỐNG QUẢN LÝ SÁCH
+    </div>
+
+    <div id="menu" style="margin: 10px; display: flex; justify-content: space-between; padding: 0 10px;">
+        <div>
+            @Html.ActionLink("SÁCH", "../Admin_63132835/TimKiemSach", new { area = "" }, new { @class = "a" }) &nbsp;|&nbsp;
+            @Html.ActionLink("KHÁCH HÀNG", "../Admin_63132835/TimKiemKhachHang", new { area = "" }, new { @class = "a" })&nbsp;|&nbsp;
+            @Html.ActionLink("TÁC GIẢ", "../Admin_63132835/TimKiemTacGia", new { area = "" }, new { @class = "a" })&nbsp;|&nbsp;
+            @Html.ActionLink("NHÀ XUẤT BẢN", "../Admin_63132835/TimKiemNhaXuatBan", new { area = "" }, new { @class = "a" })&nbsp;|&nbsp;
+            @Html.ActionLink("CHỦ ĐỀ ", "../Admin_63132835/TimKiemChuDe", new { area = "" }, new { @class = "a" })
+            <hr style="display: block;border-top: 1px solid aqua;  margin: 0;" />
+        </div>
+        <div style="display:flex;">
+            <p style="margin: 0; font-size:18px; font-weight:700; padding-right: 40px;">Xin Chào admin: @Session["tenNguoiTruyCap"]</p>
+            <span style="margin-right:50px;"><a style="text-decoration:none; font-size:20px; font-weight:700" href="@Url.Action("../NguoiDung_63132835/DangNhap")">Đăng xuất</a></span>
+        </div>
+    </div>
+
+    <div id="content">
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

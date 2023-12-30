@@ -1,0 +1,130 @@
+﻿@model project_63132835.Models.TacGia
+@{
+    ViewBag.Title = "SuaTacGia";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    .form-thong-tin-sinh-vien {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .thong-tin-anh img {
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    .thong-tin-chu {
+        flex-grow: 1;
+        margin-left: 20px;
+    }
+
+    .item {
+        margin-bottom: 15px;
+        display: flex;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    label {
+        padding: 8px;
+    }
+
+    .btn {
+        background-color: #ff0000;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-cancel {
+        background-color: #ccc;
+    }
+
+    .btn:hover {
+        background-color: #cc0000;
+    }
+
+    .title {
+        text-align: center;
+        color: #ff0000;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .justify-content-right {
+        justify-content: flex-end;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+</style>
+<section class="form-thong-tin-sinh-vien border">
+    <div class="container">
+        <form class="thong-tin-chu" action="" method="post">
+            <div><p class="text-center title">Chỉnh sửa Tác giả</p></div>
+
+            <div class="item">
+                <label>Tên Tác giả:</label>
+                <input type="text" name="TenTacGia" value="@Html.DisplayFor(model => model.TenTacGia)" />
+            </div>
+
+            <div class="item">
+                <label>Địa chỉ:</label>
+                <input type="text" name="DiaChi" value="@Html.DisplayFor(model => model.DiaChi)" />
+            </div>
+
+            <div class="item">
+                <label>Tiểu sử:</label>
+                <input type="text" name="TieuSu" value="@Html.DisplayFor(model => model.TieuSu)" />
+            </div>
+            <div class="item">
+                <label>Điện thoại:</label>
+                <input type="text" name="DienThoai" value="@Html.DisplayFor(model => model.DienThoai)" />
+            </div>
+
+            <div class="item">
+                <label></label>
+                <input class="btn btn-cancel" type="submit" value="Cập nhật">
+            </div>
+        </form>
+    </div>
+</section>

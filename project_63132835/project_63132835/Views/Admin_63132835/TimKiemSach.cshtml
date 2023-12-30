@@ -1,0 +1,208 @@
+﻿
+@model List<project_63132835.Models.Sach>
+@{
+    ViewBag.Title = "Tìm kiếm sách";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var grid = new WebGrid(
+        Model,
+        canPage: true,
+        defaultSort: "TenSach ",
+        rowsPerPage: 20
+    );
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js")
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .TimKiem {
+        max-width: 100%;
+        margin: 0px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .BoxTren {
+        text-align: center;
+        max-width: 600px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .KhungNhapThongTin {
+        display: flex;
+        flex-direction: column;
+    }
+    .input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    .KhungNut {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    input[type="submit"],
+    input[type="button"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+        background-color: #45a049;
+    }
+
+    .BoxDuoi {
+        margin-top: 50px;
+        border: solid 1px;
+    }
+    #grid-form {
+        background-color: white;
+        & .table-grid {
+            text-align: center;
+            width: 100%;
+
+        & thead {
+        font-size: 16px;
+        background-color: #2c69a0;
+        & tr th
+
+    {
+        padding: 5px 0;
+        & a
+
+    {
+        color: white;
+    }
+
+    }
+
+    & tr th a,
+    & tr th a:hover {
+        text-decoration: none;
+    }
+
+    }
+
+    & tfoot {
+        .grid-footer
+
+    {
+        color: #000;
+        font: 17px Calibri;
+        font-weight: bold;
+        & td a
+
+    {
+        background-color: #ffffff;
+        color: blue;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        padding: 1px 10px 2px 10px;
+    }
+
+    }
+    }
+
+    & tbody {
+        font-size: 14px;
+        & tr td
+
+    {
+        transition: 0.25s;
+    }
+
+    & tr:hover {
+        background-color: rgb(137,137,137,0.2);
+        & td:first-child
+
+    {
+        transform: scale(1.5);
+    }
+
+    }
+
+    & .alternatingRowStyle {
+        background-color: aliceblue;
+    }
+
+    }
+    }
+    }
+
+    tbody tr td:nth-child(2),
+    tbody tr td:nth-child(4) {
+        text-align: left;
+    }
+</style>
+
+<div class="TimKiem">
+    <a href="/Admin_63132835/ThemSach">Thêm sách</a>
+    <div class="BoxTren">
+        <form class="KhungNhapThongTin" action="" method="get">
+            <div>
+                <input class="input" type="text" name="sTimKiem" placeholder="Thông tin cần tìm ?" value="" autofocus>
+            </div>
+
+            <div class="KhungNut">
+                <input class="" type="submit" value="Tìm">
+                <input class="" type="button" value="Nhập mới"
+                       onclick="window.open('TimKiemSach', '_self')">
+            </div>
+        </form>
+    </div>
+
+    <div class="BoxDuoi" style="">
+        <div id="grid-form" class="border">
+            @grid.GetHtml(
+              tableStyle: "table-grid w-100p",
+              footerStyle: "grid-footer",
+              fillEmptyRows: true,
+              mode: WebGridPagerModes.Numeric,
+              alternatingRowStyle: "alternatingRowStyle",
+              columns: new[]
+              {
+                grid.Column("STT", format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+                grid.Column("TenSach", "Tên sách"),
+                grid.Column("GiaBan", "Giá bán"),
+                grid.Column("MoTa", "Mô tả"),
+                grid.Column("AnhBia", "Ảnh bìa"),
+                grid.Column("NgayCapNhat", "Ngày cập nhật", format:@<text> @item.NgayCapNhat.ToString("dd/MM/yyyy")</text>),
+                grid.Column("SoLuongTon", "Số lượng tồn"),
+                grid.Column("Moi", "Mới hoặc không", format: (@item) => @item.Moi==1 ? "Mới" : "Cũ"),
+                grid.Column(
+                  "Chức năng",
+                  format:
+                    @<text>
+                        <a href="@Url.Action("SuaSach", new { id = item.MaSach })" class="a">Sửa</a> &nbsp;|&nbsp;
+                        <a href="@Url.Action("XoaSach", new { id = item.MaSach })" class="a">Xóa</a>
+                    </text>
+                ),
+              }
+            )
+        </div>
+    </div>
+</div>

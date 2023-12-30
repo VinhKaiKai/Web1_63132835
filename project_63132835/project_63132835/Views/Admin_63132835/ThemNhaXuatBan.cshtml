@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "ThemNhaXuatBan";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .themSach {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .BoxNoiDung {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .item {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .btn {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+</style>
+
+    <form action="" method="post" style="margin-top:100px;" >
+        <div class="themSach">
+            <p>Trang Thêm nhà xuất bản</p>
+        </div>
+        <div class="BoxNoiDung">
+            <div class="item">
+                <label>Tên Nhà xuất bản:</label>
+                <input class="input" type="text" name="TenNXB" value="" autofocus required>
+            </div>
+            <div class="item">
+                <label>Địa chỉ:</label>
+                <input class="input" type="text" name="DiaChi" value="" required>
+            </div>
+            <div class="item">
+                <label>Điện thoại:</label>
+                <input class="input" type="text" name="DienThoai" value="" required>
+            </div>
+
+            <div class="item">
+                <label></label>
+                <input class="btn btn-success" style="height: 30px;" type="submit" value="Thêm mới">
+            </div>
+        </div>
+    </form>
+
+

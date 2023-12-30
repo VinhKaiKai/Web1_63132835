@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "ThemSach";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 80px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .themSach {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .BoxNoiDung {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .item {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .btn {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+</style>
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="themSach">
+        <p>Trang Thêm Sách</p>
+    </div>
+    <div class="BoxNoiDung">
+        <div class="item">
+            <label>Tên Sách:</label>
+            <input class="input" type="text" name="TenSach" value="" autofocus required>
+        </div>
+
+        <div class="item">
+            <label>Giá Bán:</label>
+            <input class="input" type="text" name="GiaBan" value="" required>
+        </div>
+
+        <div class="item">
+            <label>Mô Tả:</label>
+            <input class="input" type="text" name="MoTa" value="" required>
+        </div>
+
+        <div class="item">
+            <label>Ảnh Bìa:</label>
+            <input class="input" type="file" name="AnhBia" value="" required>
+        </div>
+
+        <div class="item">
+            <label>Số Lượng Tồn:</label>
+            <input class="input" type="text" name="SoLuongTon" value="" required>
+        </div>
+
+        <div class="item">
+            <label>Nhà xuất bản:</label>
+            @Html.DropDownList("MaNXB", null, htmlAttributes: new { @class = "" })
+        </div>
+
+        <div class="item">
+            <label>Chủ đề:</label>
+            @Html.DropDownList("MaChuDe", null, htmlAttributes: new { @class = "" })
+        </div>
+
+        <div class="item">
+            <label></label>
+            <input class="btn btn-success" style="height: 30px;" type="submit" value="Thêm">
+        </div>
+    </div>
+</form>

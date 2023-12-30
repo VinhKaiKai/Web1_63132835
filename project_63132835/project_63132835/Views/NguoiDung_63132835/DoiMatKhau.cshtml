@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "DoiMatKhau";
+    Layout = "~/Views/Shared/_LayoutHeThong.cshtml";
+}
+<link href="~/Content/NguoiDungCssLayout/cssDoiMatKhau.css" rel="stylesheet" />
+
+<div class="wrapper">
+    <form action="/NguoiDung_63132835/DoiMatKhau" method="post">
+        <h1>
+            Change password
+        </h1>
+        <div class="input-box">
+            <input type="text" placeholder="Tài Khoản" name="taiKhoan"
+                   required>
+        </div>
+
+        <div class="input-box">
+            <input type="text" placeholder="Mật khẩu cũ" name="matKhauCu"
+                   required>
+        </div>
+
+        <div class="input-box">
+            <input type="text" placeholder="Mật Khẩu mới" name="matKhauMoi"
+                   required>
+        </div>
+
+        <div class="input-box">
+            <input type="text" placeholder="Xác nhận mật khẩu mới" name="xacNhanMatKhauMoi"
+                   required>
+        </div>
+
+
+        <button type="submit" class="btn" name="btnSubmit">Xác nhận</button>
+        <div class="register-link">
+            <p>Dont have an account? <a href="#">Quay lại đăng nhập</a></p>
+        </div>
+    </form>
+</div>

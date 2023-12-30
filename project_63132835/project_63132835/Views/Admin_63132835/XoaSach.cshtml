@@ -1,0 +1,162 @@
+﻿@model project_63132835.Models.Sach
+@{
+    ViewBag.Title = "XoaSach";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    string tt = "";
+    string img = "/HinhAnhSP/" + @Html.DisplayFor(model => model.AnhBia).ToString();
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    .form-thong-tin-sinh-vien {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .thong-tin-anh img {
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    .thong-tin-chu {
+        flex-grow: 1;
+        margin-left: 20px;
+    }
+
+    .item {
+        margin-bottom: 15px;
+        display: flex;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    label {
+        padding: 8px;
+    }
+
+    .btn {
+        background-color: #ff0000;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-cancel {
+        background-color: #ccc;
+    }
+
+    .btn:hover {
+        background-color: #cc0000;
+    }
+
+    .title {
+        text-align: center;
+        color: #ff0000;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .justify-content-right {
+        justify-content: flex-end;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+</style>
+
+<section class="form-thong-tin-sinh-vien border">
+    <div><p class="text-center title text-red fw-bold fs-30">Xác nhận xoá sách này ?</p></div>
+
+    <div class="container ">
+        <div class="thong-tin-anh">
+            <div>
+                <img src="@img" alt="avatar">
+            </div>
+        </div>
+
+        <form class="thong-tin-chu" action="" method="post">
+            <div><p class="text-center title">Thông tin sách</p></div>
+
+            @ViewBag.a
+
+            <div class="item">
+                <label>Tên sách:</label>
+                <label>@Html.DisplayFor(model => model.TenSach)</label>
+            </div>
+
+            <div class="item">
+                <label>Giá bán:</label>
+                <label>@Html.DisplayFor(model => model.GiaBan)</label>
+            </div>
+
+            <div class="item">
+                <label>Mô tả:</label>
+                <label>@Html.DisplayFor(model => model.MoTa)</label>
+            </div>
+
+            <div class="item">
+                <label>Ngày cập nhật:</label>
+                <label>@Html.DisplayFor(model => model.NgayCapNhat)</label>
+            </div>
+
+            <div class="item">
+                <label>Số lượng tồn:</label>
+                <label>@Html.DisplayFor(model => model.SoLuongTon)</label>
+            </div>
+
+            <div class="item">
+                <label>Mới hay cũ:</label>
+                @{ 
+                    if (Model.Moi == 1) { tt = "Mới"; }
+                    else { tt = "Cũ"; }
+                }
+                <label>@tt</label>
+            </div>
+
+            <div class="item">
+                <label></label>
+                <input class="btn btn-cancel" type="submit" value="Xoá">
+            </div>
+        </form>
+    </div>
+</section>
+

@@ -1,0 +1,13 @@
+﻿@using project_63132835.Models;
+@model List<ChuDe>
+@{
+    ViewBag.Title = "DanhMucChuDe";
+    Layout = "~/Views/Shared/NguoiDungLayout.cshtml";
+}
+@*hien thi danh muc chu de*@
+
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("SachTheoChuDe",new {@MaChuDe=item.MaChuDe})" class="button button-submit">@item.TenChuDe</a>
+    <br />
+}

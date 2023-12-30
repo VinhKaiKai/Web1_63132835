@@ -1,0 +1,79 @@
+﻿@using project_63132835.Models;
+@model Sach
+<link href="~/Content/NguoiDungCssLayout/TrangChuCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/NguoiDungLayout.cshtml";
+}
+
+<h1 style="margin-left:600px; color:brown;">Chi Tiết sản phẩm</h1>
+<style>
+    /*ẩn div body*/
+    #divMenuTrai{
+        display:none;
+    }
+    /*Ẩn slider*/
+    #slider {
+        display: none;
+    }
+    #chitiet{
+       
+    }
+    #chitiet1 {
+        border: solid 1px;
+        padding: 30px;
+        background-color: white;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+    #vinh4 {
+        height: 350px;
+        width: 270px;
+    }
+    #vinh5{
+        height:100%;
+        width:100%;
+    }
+    #vinh6 div{
+        margin-bottom:10px;
+    }
+</style>
+
+@*Thong tin sach chi tiet*@
+<div id="chitiet">
+    <div id="chitiet1">
+        <div id="vinh4">
+            <img id="vinh5" src="@Url.Content("~/HinhAnhSP/"+Model.AnhBia)" />
+        </div>
+        <div id="vinh6">
+
+            <div>
+                <span style="color:orangered; font-size:30px;"> @Model.TenSach</span>
+            </div>
+            <div>
+                <span> @ViewBag.TenChuDe</span>
+            </div>
+            <div>
+                <span> @ViewBag.NhaXuatBan</span>
+            </div>
+            <div>
+                Mô tả: @Model.MoTa
+            </div>
+            <div>
+                Giá bán:<br /> <span style="color:coral; font-size:30px;">@string.Format("{0:0,0}", Model.GiaBan)</span>  VNĐ
+            </div>
+            <div>
+                @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = Model.MaSach, @strURL = Request.Url.ToString() }))
+                {
+                    <input type="submit" style="cursor:pointer" value="Mua Hàng;" id="btnGioHang" class="btn btn-primary">
+                }
+
+            </div>
+        </div>
+    </div>
+    
+    <div style="clear:both"> </div>
+    
+</div>

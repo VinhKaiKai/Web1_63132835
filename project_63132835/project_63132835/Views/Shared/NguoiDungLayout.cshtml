@@ -1,0 +1,169 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <link href="~/Content/NguoiDungCssLayout/screen.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/fonts.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+    @*chen css vo*@
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/NivoSlider/nivo-slider.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/NivoSlider/themes/default/default.css" type="text/css" media="screen" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        #slider2 {
+            height: 400px;
+            width: 70%;
+            
+        }
+        #anhvip {
+            width: 100%;
+            height: 100%;
+            padding-left: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ToanTrang">
+        <section class="blank">
+            <div class="flash" id="vinh">
+                <div class="icDienThoai">
+                    <i class="fa fa-phone-square" aria-hidden="true"></i>
+                    (08)1111-4545
+                </div>
+                @*Tạo div đăng ký đăng ký đăng nhập actionlink giống với thẻ a.*@
+                @{
+                    if (Session["tenNguoiTruyCap"] == null)
+                    {
+                        <div class="DangKyDangNhap">
+
+                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                            @Html.ActionLink("Đăng ký", "DangKy", "NguoiDung_63132835", null, new { @class = "DangKy vinh" })
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            @*<a href = "Home/DangKy" class="DangKy">Đăng ký</a>*@
+                            @Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung_63132835", null, htmlAttributes: new { @class = "DangNhap" })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="DangKyDangNhap">
+                            <span>Chào mừng: @Session["tenNguoiTruyCap"]</span>
+                            <span><a href="@Url.Action("../NguoiDung_63132835/DangNhap")">Đăng xuất</a></span>
+                        </div>
+                    }
+                }
+            </div>
+
+            @*xay dung div menu*@
+            @*hop tim kiem*@
+            <div class="flash success" id="divDanhMuc">
+                <div id="txtTimKiem">
+                    @using (Html.BeginForm("KetQuaTimKiem","TimKiem_63132835",FormMethod.Post))
+                    {
+                        @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Nhập vào từ khóa..." })
+                        <div id="divHinhAnhTimKiem">
+                            <button type="submit"><img src="~/HinhAnh/timkiem.png" /></button>
+                        </div>
+                    }
+
+                    @*menu ben phai*@
+                </div>
+                <ul class="navMenu">
+                    <li>
+                        <a href="#">Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href="#">Liên Hệ</a>
+                    </li>
+                    <li>
+                        <a href="#">Hướng Dẫn</a>
+                    </li>
+                    <li>
+                        <a href="#">Giới thiệu</a>
+                    </li>
+                    <li>
+                        <a href="#">Sách</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="bo">
+            @*div menu bên trái*@
+            <div id="divMenuTrai">
+                <div class="activity" id="vinh1">
+                    @*chen vao partialview*@
+                    @Html.Action("SachMoiPartial", "Sach_63132835")
+                </div>
+            </div>
+            @*Ảnh bên phải để trang trí*@
+            <div id="slider2" class="nivoSlider" >
+                <img id="anhvip" src="~/HinhAnh/anhbai.jpg" data-thumb="images/up.jpg" alt="" title="This is an example of a caption" />
+                @*<img src="~/HinhAnh/quanlybansach.jpg" data-thumb="images/walle.jpg" alt="" data-transition="slideInLeft" />
+                <img src="~/HinhAnh/quanlybansach.jpg" data-thumb="images/nemo.jpg" alt="" title="#htmlcaption" />*@
+            </div>
+
+
+            <div style="clear:both"></div>
+
+        </section>
+
+        @*Div body*@
+        <div id="NoiDung">
+            @RenderBody()
+        </div>
+        <section id="chudesach">
+            @*Phần chủ đề*@
+            <div>
+                @Html.Action("ChuDePartial", "ChuDe_63132835")
+            </div>
+            <hr>
+        </section>
+
+        @*Div nhà xuất bản*@
+        <section class="blank items" id="phiaduoi">
+            <div id="divLeft">
+                <div class="item" id="vinh2">
+                    <div class="item-info">
+                        @*Action partial view*@
+                        @Html.Action("NhaXuatBanPartial", "NhaXuatBan_63132835")
+
+                    </div>
+                    <div id="anhnxb">
+                        <img src="~/HinhAnh/liu5.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div id="divRight">
+                @RenderSection("NoiDungBenPhai", false)
+                <div>
+                    <img style="height:155px; width:324px;" src="~/HinhAnh/quanlybansach.jpg" alt="Alternate Text" />
+                    <img style="height:155px; width:324px;" src="~/HinhAnh/so1.jpg" alt="Alternate Text" />
+                    <img style="height:155px; width:324px;" src="~/HinhAnh/so2.jpg" alt="Alternate Text" />
+                    <img style="height:155px; width:324px;" src="~/HinhAnh/so3.jpg" alt="Alternate Text" />
+                    <img style="height:155px; width:324px;" src="~/HinhAnh/so4.jpg" alt="Alternate Text" />
+                    <img style="height:155px; width:324px;" src="~/HinhAnh/so8.jpg" alt="Alternate Text" />
+                    <img style="height:155px; width:324px;" src="~/HinhAnh/so6.jpg" alt="Alternate Text" />
+                    <img style="height:155px; width:324px;" src="~/HinhAnh/so7.jpg" alt="Alternate Text" />
+                    <img style="height:155px; width:324px;" src="~/HinhAnh/so9.jpg" alt="Alternate Text" />
+                </div>
+            </div>
+            <div style="clear:both"></div>
+            <div>
+                <a href="#" class="button button-buy">CHÀO MỪNG QUÝ KHÁCH ĐÃ SỬ DỤNG</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
